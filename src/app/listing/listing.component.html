@@ -1,0 +1,26 @@
+
+  <p class="info-text mat-body-1 not-found" *ngIf="listings.length == 0">Listing not found!</p>
+  <mat-card *ngIf="listings.length > 0">
+    <mat-card-header>
+      <mat-card-title>
+          {{listing.street}}, {{listing.city}}, {{listing.state}} - {{listing.zip}}
+      </mat-card-title>
+      <mat-card-subtitle>
+          {{listing.beds}} beds, {{listing.baths}} baths - {{listing.sq_ft}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Size of the property is {{ listing.sq_ft}} Square Feet.<br>
+          It is located on {{ listing.street}} in {{listing.city}}, {{listing.state}} - {{listing.zip}}.<br>
+          The property was sold on {{listing.sale_date  | date:'yyyy-MM-dd mm:ss'}} for {{listing.price}}.<br>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink] = "['/']">Back to Dashboard</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div #map style="width:100%;height:400px" ></div>
+
+

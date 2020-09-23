@@ -1,0 +1,62 @@
+<app-filter></app-filter>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort *ngIf="listings.length > 0">
+  <ng-container matColumnDef="street">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('street')"> Street </th>
+    <td mat-cell *matCellDef="let element"> {{element.street}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('city')"> City </th>
+    <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="state">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('state')"> State </th>
+    <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="zip">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('zip')"> Zip </th>
+    <td mat-cell *matCellDef="let element"> {{element.zip}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('type')"> Type </th>
+    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="saleDate" >
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('sale_date')"> Sale Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.sale_date   | date:'yyyy-MM-dd mm:ss'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="squareFeet">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('sq_ft')">  Size </th>
+    <td mat-cell *matCellDef="let element"> {{element.sq_ft}} Square Feet </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sortData('price')"> Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr
+     mat-row
+    *matRowDef="let row; columns: displayColumns;"
+    [routerLink] = "['/listing', row.id]">
+  </tr>
+</table>
+<mat-paginator
+  [length] = "totalListings"
+  [pageSize] = "listingsPerPage"
+  [pageSizeOptions] = "pageSizeOptions"
+  (page) = "onChangedPage($event)"
+  *ngIf="listings.length > 0"
+>
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="listings.length == 0 && !isLoading">No listings added yet.</p>

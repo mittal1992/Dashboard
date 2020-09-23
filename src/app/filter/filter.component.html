@@ -1,0 +1,56 @@
+<mat-card>
+  <form (submit) = "onFilter()" [formGroup]="form" >
+    <mat-form-field>
+      <mat-label>Street</mat-label>
+      <input
+      formControlName = "street"
+      matInput
+      type="text"
+      name="street"
+      placeholder="Enter street"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input
+      formControlName = "city"
+      matInput
+      type="text"
+      name="city"
+      placeholder="Enter City"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <input
+      formControlName = "state"
+      matInput
+      type="text"
+      name="state"
+      placeholder="Enter State"
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Zip</mat-label>
+      <input
+      formControlName = "zip"
+      matInput
+      type="text"
+      name="zip"
+      placeholder="Enter Zip"
+      >
+    </mat-form-field>
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+    >
+      Filter
+    </button>
+  </form>
+</mat-card>
+
